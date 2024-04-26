@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import ImageGallery from "react-image-gallery";
+/*import cat from './imgs/cat.jpg';
+import kitten from './imgs/kitten.jpg';
+import thecat from './imgs/thecat.jpg';*/
+
+ 
+const importAll=(r)=>r.keys().map(r);
+const images=importAll(require.context('./imgs',false,/\.(jpg)$/));
+
 
 function App() {
+  const imageItems=images.map((image,index)=>({
+    original:image,
+    thumbnail:image,
+  }))
+  /*const images = [
+    {
+      original: cat,
+      thumbnail: cat,
+    },
+    {
+      original: kitten,
+      thumbnail:kitten,
+    },
+    {
+      original: thecat,
+      thumbnail: thecat
+    }
+  ];*/
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+      {/*<ImageGallery items={images} />;*/}
+      <ImageGallery items={imageItems} />;
+   </>
   );
 }
 
